@@ -4,7 +4,7 @@ resolver = "2"
 
 members = [
   "crates/wasm",
-  "crates/client-blockifier",
+  "crates/blockifier_utils",
 ]
 
 [workspace.package]
