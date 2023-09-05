@@ -301,6 +301,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "blockifier_utils"
+version = "0.1.0"
+dependencies = [
+ "blockifier",
+ "cairo-lang-starknet",
+ "serde",
+ "serde_json",
+ "starknet-core",
+ "starknet_api",
+]
+
+[[package]]
 name = "bumpalo"
 version = "3.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -870,22 +882,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "client-sequencer"
-version = "0.1.0"
-dependencies = [
- "blockifier",
- "cairo-lang-starknet",
- "serde",
- "serde_json",
- "starknet-core",
- "starknet_api",
-]
-
-[[package]]
 name = "client-wasm"
 version = "0.1.0"
 dependencies = [
- "client-sequencer",
+ "blockifier_utils",
  "console_error_panic_hook",
  "lazy_static",
  "serde",

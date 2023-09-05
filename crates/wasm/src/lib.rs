@@ -1,8 +1,8 @@
 mod utils;
 use std::sync::Mutex;
 
-use client_sequencer::utils::{addr, invoke_calldata, invoke_tx, HashMap};
-use client_sequencer::Client;
+use blockifier_utils::utils::{addr, invoke_calldata, invoke_tx, HashMap};
+use blockifier_utils::Client;
 use utils::set_panic_hook;
 use wasm_bindgen::prelude::*;
 
@@ -40,7 +40,19 @@ pub fn test_tx() -> JsValue {
 }
 
 #[wasm_bindgen]
-pub fn register_class(hash: String, json: String) -> bool {
+pub fn register_class_sierra(hash: String, json: String) -> bool {
+    let mut client = CLIENT.lock().unwrap();
+    match client.register_class(&hash, &json) {
+        Ok(_) => true,
+        Err(e) => {
+            log(&format!("{:?}", e));
+            false
+        }
+    }
+}
+
+#[wasm_bindgen]
+pub fn register_class_raw(hash: String, json: String) -> bool {
     let mut client = CLIENT.lock().unwrap();
     match client.register_class(&hash, &json) {
         Ok(_) => true,

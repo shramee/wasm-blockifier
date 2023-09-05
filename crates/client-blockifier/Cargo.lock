@@ -826,7 +826,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "client-sequencer"
+name = "blockifier_utils"
 version = "0.1.0"
 dependencies = [
  "blockifier",

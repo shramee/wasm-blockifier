@@ -80,16 +80,6 @@ pub fn invoke_calldata(contract: &str, entry_point: &str, calldata: Vec<&str>) -
 pub fn compile_sierra_class(json: &str) -> Result<ContractClass, String> {
     let value: Value = serde_json::from_str(json).unwrap();
 
-    println!("\n\n\n");
-    println!("JSON keys for {} chars of JSON", json.len());
-    for key in value.as_object().unwrap().keys() {
-        println!("{}", key);
-    }
-    // println!("sierra_program: {:?}", value["sierra_program"]);
-    // println!("contract_class_version: {:?}", value["contract_class_version"]);
-    // println!("abi: {:?}", value["abi"]);
-    println!("\n\n\n");
-
     let contract_class = cairo_lang_starknet::contract_class::ContractClass {
         abi: serde_json::from_value(value["abi"].clone()).ok(),
         sierra_program: serde_json::from_value(value["sierra_program"].clone()).unwrap(),
