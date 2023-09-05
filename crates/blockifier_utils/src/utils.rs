@@ -32,8 +32,11 @@ pub mod cairo_vm_const {
 /// Fee token contract - Contract Address and Class Hash (identical)
 pub const FEE_TKN_ADDR: &str = "0x1";
 
-/// Account contract class hash, can also be deployed to same address for testing
+/// Account contract class hash, can also be deployed to same address
 pub const ACCOUNT_ADDR: &str = "0x100";
+
+/// Universal Deployer class hash, can also be deployed to same address
+pub const DEPLOYER_ADDR: &str = "0x2";
 
 pub const DEFAULT_GAS_PRICE: u128 = 100 * u128::pow(10, 9); // Given in units of wei.
 pub const CAIRO_STEPS: u32 = 1_000_000;

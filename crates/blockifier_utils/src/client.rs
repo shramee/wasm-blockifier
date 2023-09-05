@@ -14,7 +14,7 @@ use starknet_api::state::StorageKey;
 
 use crate::utils::{
     addr, block_context, compile_sierra_class, HashMap, TransactionExecutionError,
-    TransactionExecutionInfo, ACCOUNT_ADDR, CAIRO_STEPS, FEE_TKN_ADDR,
+    TransactionExecutionInfo, ACCOUNT_ADDR, CAIRO_STEPS, DEPLOYER_ADDR, FEE_TKN_ADDR,
 };
 use crate::ClientState;
 
@@ -47,9 +47,12 @@ impl Client {
         let account_json = String::from_utf8_lossy(account_json);
         let erc20_json = include_bytes!("../contracts/erc20.json");
         let erc20_json = String::from_utf8_lossy(erc20_json);
+        let udc_json = include_bytes!("../contracts/deployer.json");
+        let udc_json = String::from_utf8_lossy(udc_json);
 
         client.register_class_v0(FEE_TKN_ADDR, &erc20_json).unwrap();
         client.register_class_v0(ACCOUNT_ADDR, &account_json).unwrap();
+        client.register_class_v0(DEPLOYER_ADDR, &udc_json).unwrap();
 
         let fees_contract_storage = HashMap::from([
             (addr::storage("ERC20_balances", &[ACCOUNT_ADDR]), "200000000000000"),
@@ -58,6 +61,7 @@ impl Client {
 
         client.register_contract(FEE_TKN_ADDR, FEE_TKN_ADDR, fees_contract_storage).unwrap();
         client.register_contract(ACCOUNT_ADDR, ACCOUNT_ADDR, HashMap::new()).unwrap();
+        client.register_contract(DEPLOYER_ADDR, DEPLOYER_ADDR, HashMap::new()).unwrap();
 
         client
     }
