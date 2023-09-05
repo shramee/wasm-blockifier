@@ -3,7 +3,7 @@ use std::sync::Mutex;
 
 use blockifier_utils::utils::{
     addr, invoke_calldata, invoke_tx, selector_from_name, CallEntryPoint, Calldata, HashMap,
-    StarkFelt,
+    StarkFelt, DEPLOYER_ADDR,
 };
 use blockifier_utils::Client;
 use utils::set_panic_hook;
@@ -77,6 +77,19 @@ pub fn register_class_v0(hash: String, json: String) -> bool {
         }
     }
 }
+
+// #[wasm_bindgen]
+// pub fn deploy_contract(
+//     address: String,
+//     class_hash: String,
+//     salt: String,
+//     calldata: JsValue,
+//     caller: String,
+// ) -> JsValue { let calldata: Vec<String> = serde_wasm_bindgen::from_value(calldata).unwrap(); let
+//   calldata = calldata.iter().map(|cd| cd.as_str()).collect(); // classHash, salt ,unique,
+//   calldata_len, calldata execute( caller, DEPLOYER_ADDR.into(), "deployContract".into(),
+//   serde_wasm_bindgen::to_value(vec![class_hash, address, salt]).unwrap(), )
+// }
 
 #[wasm_bindgen]
 pub fn register_contract(address: String, class_hash: String) -> bool {
