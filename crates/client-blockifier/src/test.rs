@@ -47,6 +47,7 @@ mod transactions {
         let mut client = Client::new();
         let account_json = include_bytes!("../contracts/dojo-world-test.json");
         let account_json = String::from_utf8_lossy(account_json);
-        client.register_class("0x3071d", &account_json).unwrap();
+
+        client.register_sierra_class("0x3071d", &account_json).unwrap();
     }
 }

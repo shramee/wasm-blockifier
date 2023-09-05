@@ -272,9 +272,9 @@ dependencies = [
  "ark-ff",
  "ark-secp256k1",
  "cairo-felt",
- "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
- "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
- "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-lang-vm-utils",
  "cairo-vm",
  "derive_more",
@@ -789,13 +789,13 @@ dependencies = [
 [[package]]
 name = "cairo-lang-vm-utils"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "ark-ff",
  "ark-std",
  "cairo-felt",
- "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
- "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-vm",
  "hashbrown 0.14.0",
  "num-bigint",

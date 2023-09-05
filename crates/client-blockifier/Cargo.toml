@@ -13,12 +13,11 @@ blockifier = { git = "https://github.com/keep-starknet-strange/blockifier", defa
 # For Sierra class struct
 starknet_api = { git = "https://github.com/keep-starknet-strange/starknet-api", branch = "no_std-support-dc83f05", default-features = false }
 
-# For compiling to Casm
+# For compiling to Casm,
 # TODO replace keep-starknet-strange/cairo when it's compatible
+# Note https://github.com/keep-starknet-strange/cairo/pull/3
 cairo-lang-starknet = { git = "https://github.com/shramee/cairo.git", branch = "no_std-support-8bbf530" }
 
-# cairo-lang-starknet = { path = "../../../cairo-strange/crates/cairo-lang-starknet", default-features = false }
-# cairo-lang-compiler = { path = "../../../cairo-strange/crates/cairo-lang-compiler", default-features = false }
 starknet-core = { version = "0.5.0" }
 serde = { version = "1.0.160", features = ["derive"], default-features = false }
 serde_json = { version = "1.0.96", features = [ "alloc", "raw_value" ], default-features = false }
