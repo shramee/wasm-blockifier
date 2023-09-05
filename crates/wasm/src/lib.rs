@@ -1,7 +1,10 @@
 mod utils;
 use std::sync::Mutex;
 
-use blockifier_utils::utils::{addr, invoke_calldata, invoke_tx, HashMap};
+use blockifier_utils::utils::{
+    addr, invoke_calldata, invoke_tx, selector_from_name, CallEntryPoint, Calldata, HashMap,
+    StarkFelt,
+};
 use blockifier_utils::Client;
 use utils::set_panic_hook;
 use wasm_bindgen::prelude::*;
@@ -128,13 +131,48 @@ pub fn execute(caller: String, callee: String, entrypoint: String, calldata: JsV
 
     match tx_res {
         Ok(exec_info) => {
-            log(&format!("execute_call_info: {:#?}", exec_info.execute_call_info));
-            log(&format!("validate_call_info: {:#?}", exec_info.validate_call_info));
+            let exec_call_info = exec_info.execute_call_info.unwrap();
 
-            serde_wasm_bindgen::to_value(&vec![2, 5, 7, 9, 11]).unwrap()
+            serde_wasm_bindgen::to_value(&exec_call_info.accessed_storage_keys).unwrap()
         }
         Err(tx_err) => {
             log(&format!("{:#?}", tx_err));
+            JsValue::FALSE
+        }
+    }
+}
+
+#[wasm_bindgen]
+pub fn call(contract: String, entry_point: String, calldata: JsValue) -> JsValue {
+    log(&format!("contract: {contract} entrypoint: {entry_point} \n\n{:?}", calldata));
+
+    let calldata: Vec<String> = serde_wasm_bindgen::from_value(calldata).unwrap();
+    let calldata: Vec<StarkFelt> = calldata.iter().map(|cd| addr::felt(cd.as_str())).collect();
+    let entry_point_selector = selector_from_name(entry_point.as_str());
+
+    // let tx = invoke_tx(&caller, invoke_calldata(&contract, &entrypoint, calldata), None, "1");
+    let mut client = CLIENT.lock().unwrap();
+
+    let call = CallEntryPoint {
+        calldata: Calldata(calldata.into()),
+        storage_address: addr::contract(&contract),
+        entry_point_selector,
+        initial_gas: 1000000000,
+        ..Default::default()
+    };
+
+    let call_res = client.call(call);
+
+    match call_res {
+        Ok(result) => {
+            if result.execution.failed {
+                JsValue::FALSE
+            } else {
+                serde_wasm_bindgen::to_value(&result.execution.retdata.0).unwrap()
+            }
+        }
+        Err(err) => {
+            log(&format!("{:#?}", err));
             JsValue::FALSE
         }
     }
