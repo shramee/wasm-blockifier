@@ -2,7 +2,11 @@
 mod transactions {
     use std::path::PathBuf;
 
+    use blockifier::abi::abi_utils::selector_from_name;
+    use blockifier::execution::entry_point::CallEntryPoint;
     use blockifier::state::state_api::StateReader;
+    use starknet_api::calldata;
+    use starknet_api::transaction::Calldata;
 
     use crate::client::Client;
     use crate::utils::{addr, invoke_calldata, invoke_tx, ACCOUNT_ADDR, FEE_TKN_ADDR};
@@ -35,10 +39,10 @@ mod transactions {
         let res = client.execute(txn);
 
         assert!(res.is_ok(), "Transaction failed");
-        // if let Ok(exec_info) = res {
-        //     assert!(!exec_info.is_reverted(), "Transaction reverted");
-        //     assert!(exec_info.execute_call_info.is_some(), "No execution call info");
-        // }
+        if let Ok(exec_info) = res {
+            assert!(!exec_info.is_reverted(), "Transaction reverted");
+            assert!(exec_info.execute_call_info.is_some(), "No execution call info");
+        }
     }
 
     #[test]
@@ -49,5 +53,22 @@ mod transactions {
         let account_json = String::from_utf8_lossy(account_json);
 
         client.register_sierra_class("0x3071d", &account_json).unwrap();
+    }
+
+    #[test]
+    fn call() {
+        let mut client = Client::new();
+
+        let call = CallEntryPoint {
+            calldata: calldata![addr::felt(ACCOUNT_ADDR)],
+            storage_address: addr::contract(FEE_TKN_ADDR),
+            entry_point_selector: selector_from_name("balanceOf"),
+            initial_gas: 1000000000,
+            ..Default::default()
+        };
+        let res = client.call(call);
+
+        assert!(res.is_ok(), "Call failed");
+        assert!(res.unwrap().execution.retdata.0.len() == 2, "Unexpected response");
     }
 }

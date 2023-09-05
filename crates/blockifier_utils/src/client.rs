@@ -1,7 +1,12 @@
 use blockifier::block_context::BlockContext;
 use blockifier::execution::contract_class::{ContractClass, ContractClassV0, ContractClassV1};
+use blockifier::execution::entry_point::{
+    CallEntryPoint, CallInfo, EntryPointExecutionContext, ExecutionResources,
+};
+use blockifier::execution::errors::EntryPointExecutionError;
 use blockifier::state::cached_state::CachedState;
 use blockifier::transaction::account_transaction::AccountTransaction;
+use blockifier::transaction::objects::AccountTransactionContext;
 use blockifier::transaction::transactions::ExecutableTransaction;
 use starknet_api::api_core::{ClassHash, ContractAddress, Nonce};
 use starknet_api::hash::StarkFelt;
@@ -9,7 +14,7 @@ use starknet_api::state::StorageKey;
 
 use crate::utils::{
     addr, block_context, compile_sierra_class, HashMap, TransactionExecutionError,
-    TransactionExecutionInfo, ACCOUNT_ADDR, FEE_TKN_ADDR,
+    TransactionExecutionInfo, ACCOUNT_ADDR, CAIRO_STEPS, FEE_TKN_ADDR,
 };
 use crate::ClientState;
 
@@ -144,6 +149,18 @@ impl Client {
         tx: AccountTransaction,
     ) -> Result<TransactionExecutionInfo, TransactionExecutionError> {
         tx.execute(&mut self.cache, &self.block_ctx, false, false)
+    }
+
+    pub fn call(&mut self, call: CallEntryPoint) -> Result<CallInfo, EntryPointExecutionError> {
+        call.execute(
+            &mut self.cache,
+            &mut ExecutionResources::default(),
+            &mut EntryPointExecutionContext::new(
+                self.block_ctx.clone(),
+                AccountTransactionContext::default(),
+                CAIRO_STEPS.try_into().unwrap(),
+            ),
+        )
     }
 
     pub fn update_storage(_storage: HashMap<ContractAddress, HashMap<StorageKey, StarkFelt>>) {

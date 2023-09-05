@@ -1,10 +1,14 @@
 pub use blockifier::abi::abi_utils::{get_storage_var_address, selector_from_name};
-use blockifier::block_context::BlockContext;
-use blockifier::execution::contract_class::{ContractClass, ContractClassV1};
+pub use blockifier::block_context::BlockContext;
+pub use blockifier::execution::contract_class::{ContractClass, ContractClassV1};
+pub use blockifier::execution::entry_point::{
+    CallEntryPoint, CallInfo, EntryPointExecutionContext, ExecutionResources,
+};
+pub use blockifier::execution::errors::EntryPointExecutionError;
 pub use blockifier::stdlib::collections::HashMap;
 pub use blockifier::transaction::account_transaction::AccountTransaction;
 pub use blockifier::transaction::errors::TransactionExecutionError;
-pub use blockifier::transaction::objects::TransactionExecutionInfo;
+pub use blockifier::transaction::objects::{AccountTransactionContext, TransactionExecutionInfo};
 use cairo_vm_const::*;
 use serde_json::Value;
 pub use starknet_api::api_core::{ChainId, ClassHash, ContractAddress, Nonce, PatriciaKey};
