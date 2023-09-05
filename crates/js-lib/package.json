@@ -1,0 +1,31 @@
+{
+  "name": "dojo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
+  "main": "./dist/dojo.umd.cjs",
+  "module": "./dist/dojo.js",
+  "types": "./index.d.ts",
+  "exports": {
+    "types": "./index.d.ts",
+    "import": "./dist/dojo.js",
+    "require": "./dist/dojo.umd.cjs"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --declaration && vite build"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3",
+    "vite": "^4.3.9"
+  },
+  "dependencies": {
+    "@dojoengine/core": "^0.0.17",
+    "starknet": "^5.14.1",
+    "vite-plugin-dts": "^3.5.3"
+  }
+}
