@@ -272,9 +272,9 @@ dependencies = [
  "ark-ff",
  "ark-secp256k1",
  "cairo-felt",
- "cairo-lang-casm",
- "cairo-lang-casm-contract-class",
- "cairo-lang-utils",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-lang-vm-utils",
  "cairo-vm",
  "derive_more",
@@ -321,7 +321,7 @@ checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 [[package]]
 name = "cairo-felt"
 version = "0.8.5"
-source = "git+https://github.com/keep-starknet-strange/cairo-rs.git?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
+source = "git+https://github.com/keep-starknet-strange/cairo-rs?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
 dependencies = [
  "lazy_static",
  "num-bigint",
@@ -336,7 +336,22 @@ name = "cairo-lang-casm"
 version = "2.1.0"
 source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
 dependencies = [
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "hashbrown 0.14.0",
+ "indoc",
+ "num-bigint",
+ "num-traits 0.2.16",
+ "parity-scale-codec",
+ "parity-scale-codec-derive",
+ "serde",
+]
+
+[[package]]
+name = "cairo-lang-casm"
+version = "2.1.0"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
+dependencies = [
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "hashbrown 0.14.0",
  "indoc",
  "num-bigint",
@@ -351,8 +366,8 @@ name = "cairo-lang-casm-contract-class"
 version = "2.1.0"
 source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
 dependencies = [
- "cairo-lang-casm",
- "cairo-lang-utils",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
  "itertools",
  "num-bigint",
  "serde",
@@ -360,9 +375,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "cairo-lang-casm-contract-class"
+version = "2.1.0"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
+dependencies = [
+ "cairo-lang-casm 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "itertools",
+ "num-bigint",
+ "serde",
+ "thiserror",
+]
+
+[[package]]
 name = "cairo-lang-compiler"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "anyhow",
  "cairo-lang-defs",
@@ -376,33 +404,33 @@ dependencies = [
  "cairo-lang-sierra",
  "cairo-lang-sierra-generator",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "itertools",
  "log",
  "salsa",
  "smol_str",
- "thiserror-no-std",
+ "thiserror",
 ]
 
 [[package]]
 name = "cairo-lang-debug"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
 ]
 
 [[package]]
 name = "cairo-lang-defs"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "cairo-lang-diagnostics",
  "cairo-lang-filesystem",
  "cairo-lang-parser",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "indexmap 2.0.0-pre",
  "itertools",
  "salsa",
@@ -412,11 +440,11 @@ dependencies = [
 [[package]]
 name = "cairo-lang-diagnostics"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "cairo-lang-filesystem",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "itertools",
  "salsa",
 ]
@@ -424,9 +452,9 @@ dependencies = [
 [[package]]
 name = "cairo-lang-eq-solver"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "good_lp",
  "indexmap 2.0.0-pre",
  "itertools",
@@ -435,10 +463,10 @@ dependencies = [
 [[package]]
 name = "cairo-lang-filesystem"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "path-clean",
  "salsa",
  "serde",
@@ -448,7 +476,7 @@ dependencies = [
 [[package]]
 name = "cairo-lang-lowering"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "cairo-lang-defs",
@@ -458,7 +486,7 @@ dependencies = [
  "cairo-lang-proc-macros",
  "cairo-lang-semantic",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "id-arena",
  "indexmap 2.0.0-pre",
  "itertools",
@@ -473,13 +501,13 @@ dependencies = [
 [[package]]
 name = "cairo-lang-parser"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-diagnostics",
  "cairo-lang-filesystem",
  "cairo-lang-syntax",
  "cairo-lang-syntax-codegen",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "colored",
  "itertools",
  "log",
@@ -493,7 +521,7 @@ dependencies = [
 [[package]]
 name = "cairo-lang-plugins"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-defs",
  "cairo-lang-diagnostics",
@@ -501,7 +529,7 @@ dependencies = [
  "cairo-lang-parser",
  "cairo-lang-semantic",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "indent",
  "indoc",
  "itertools",
@@ -513,7 +541,7 @@ dependencies = [
 [[package]]
 name = "cairo-lang-proc-macros"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "quote",
@@ -523,20 +551,20 @@ dependencies = [
 [[package]]
 name = "cairo-lang-project"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-filesystem",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "serde",
  "smol_str",
- "thiserror-no-std",
+ "thiserror",
  "toml",
 ]
 
 [[package]]
 name = "cairo-lang-semantic"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "cairo-lang-defs",
@@ -545,7 +573,7 @@ dependencies = [
  "cairo-lang-parser",
  "cairo-lang-proc-macros",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "id-arena",
  "itertools",
  "log",
@@ -559,9 +587,9 @@ dependencies = [
 [[package]]
 name = "cairo-lang-sierra"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "const-fnv1a-hash",
  "convert_case",
  "derivative",
@@ -581,33 +609,33 @@ dependencies = [
 [[package]]
 name = "cairo-lang-sierra-ap-change"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-eq-solver",
  "cairo-lang-sierra",
  "cairo-lang-sierra-type-size",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "itertools",
- "thiserror-no-std",
+ "thiserror",
 ]
 
 [[package]]
 name = "cairo-lang-sierra-gas"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-eq-solver",
  "cairo-lang-sierra",
  "cairo-lang-sierra-type-size",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "itertools",
- "thiserror-no-std",
+ "thiserror",
 ]
 
 [[package]]
 name = "cairo-lang-sierra-generator"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "cairo-lang-defs",
@@ -620,7 +648,7 @@ dependencies = [
  "cairo-lang-semantic",
  "cairo-lang-sierra",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "id-arena",
  "indexmap 2.0.0-pre",
  "itertools",
@@ -633,42 +661,42 @@ dependencies = [
 [[package]]
 name = "cairo-lang-sierra-to-casm"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "assert_matches",
  "cairo-felt",
- "cairo-lang-casm",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-lang-sierra",
  "cairo-lang-sierra-ap-change",
  "cairo-lang-sierra-gas",
  "cairo-lang-sierra-type-size",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "indoc",
  "itertools",
  "log",
  "num-bigint",
  "num-traits 0.2.16",
- "thiserror-no-std",
+ "thiserror",
 ]
 
 [[package]]
 name = "cairo-lang-sierra-type-size"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-sierra",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
 ]
 
 [[package]]
 name = "cairo-lang-starknet"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "anyhow",
  "cairo-felt",
- "cairo-lang-casm",
- "cairo-lang-casm-contract-class",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-lang-compiler",
  "cairo-lang-defs",
  "cairo-lang-diagnostics",
@@ -683,7 +711,7 @@ dependencies = [
  "cairo-lang-sierra-generator",
  "cairo-lang-sierra-to-casm",
  "cairo-lang-syntax",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "convert_case",
  "genco",
  "indent",
@@ -698,29 +726,29 @@ dependencies = [
  "serde_json",
  "sha3",
  "smol_str",
- "thiserror-no-std",
+ "thiserror",
 ]
 
 [[package]]
 name = "cairo-lang-syntax"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "cairo-lang-debug",
  "cairo-lang-filesystem",
- "cairo-lang-utils",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
  "num-bigint",
  "num-traits 0.2.16",
  "salsa",
  "smol_str",
- "thiserror-no-std",
+ "thiserror",
  "unescaper",
 ]
 
 [[package]]
 name = "cairo-lang-syntax-codegen"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
 dependencies = [
  "genco",
  "xshell",
@@ -743,6 +771,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "cairo-lang-utils"
+version = "2.1.0"
+source = "git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530#29a53b2e8a59cb854715c100db5e4177e06b587a"
+dependencies = [
+ "cairo-felt",
+ "hashbrown 0.14.0",
+ "indexmap 2.0.0-pre",
+ "itertools",
+ "num-bigint",
+ "num-integer",
+ "num-traits 0.2.16",
+ "parity-scale-codec",
+ "serde",
+]
+
+[[package]]
 name = "cairo-lang-vm-utils"
 version = "2.1.0"
 source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
@@ -750,8 +794,8 @@ dependencies = [
  "ark-ff",
  "ark-std",
  "cairo-felt",
- "cairo-lang-casm",
- "cairo-lang-utils",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-vm",
  "hashbrown 0.14.0",
  "num-bigint",
@@ -762,7 +806,7 @@ dependencies = [
 [[package]]
 name = "cairo-take_until_unbalanced"
 version = "0.29.0"
-source = "git+https://github.com/keep-starknet-strange/cairo-rs.git?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
+source = "git+https://github.com/keep-starknet-strange/cairo-rs?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
 dependencies = [
  "nom",
 ]
@@ -770,7 +814,7 @@ dependencies = [
 [[package]]
 name = "cairo-vm"
 version = "0.8.5"
-source = "git+https://github.com/keep-starknet-strange/cairo-rs.git?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
+source = "git+https://github.com/keep-starknet-strange/cairo-rs?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -778,8 +822,8 @@ dependencies = [
  "bincode",
  "bitvec",
  "cairo-felt",
- "cairo-lang-casm",
- "cairo-lang-casm-contract-class",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
  "cairo-take_until_unbalanced",
  "generic-array",
  "hashbrown 0.14.0",
@@ -2241,7 +2285,7 @@ name = "starknet_api"
 version = "0.4.1"
 source = "git+https://github.com/keep-starknet-strange/starknet-api?branch=no_std-support-dc83f05#4356aa56e60d0a87792eecdb4d668cfcc1c74211"
 dependencies = [
- "cairo-lang-casm-contract-class",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
  "derive_more",
  "hashbrown 0.14.0",
  "hex",
