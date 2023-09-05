@@ -69,7 +69,7 @@ pub fn invoke_calldata(contract: &str, entry_point: &str, calldata: Vec<&str>) -
         addr::felt(contract),   // Contract address.
         entry_point_selector.0, // EP selector.
     ];
-
+    calldata_with_callee.push(addr::felt(&calldata.len().to_string()));
     for param in calldata.into_iter() {
         calldata_with_callee.push(param.try_into().unwrap());
     }

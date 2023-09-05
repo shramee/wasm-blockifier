@@ -27,7 +27,7 @@ mod transactions {
 
         let txn = invoke_tx(
             ACCOUNT_ADDR,
-            invoke_calldata(FEE_TKN_ADDR, "balanceOf", vec!["0x1", ACCOUNT_ADDR]),
+            invoke_calldata(FEE_TKN_ADDR, "balanceOf", vec![ACCOUNT_ADDR]),
             None,
             "1",
         );
