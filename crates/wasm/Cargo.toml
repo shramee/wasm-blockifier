@@ -17,3 +17,7 @@ wasm-bindgen = "0.2.84"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.34"
+
+[profile.dev]
+opt-level = 1
+incremental = true

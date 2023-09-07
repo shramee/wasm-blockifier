@@ -3,10 +3,9 @@ use std::sync::Mutex;
 
 use blockifier_utils::utils::{
     addr, invoke_calldata, invoke_tx, selector_from_name, CallEntryPoint, Calldata, HashMap,
-    StarkFelt, DEPLOYER_ADDR,
+    StarkFelt,
 };
 use blockifier_utils::Client;
-use utils::set_panic_hook;
 use wasm_bindgen::prelude::*;
 
 #[macro_use]
@@ -26,8 +25,8 @@ extern "C" {
 
 #[wasm_bindgen]
 pub fn debug() {
-    set_panic_hook();
-    log("Panic hook set");
+    console_error_panic_hook::set_once();
+    log("WASM: Panic hook set");
 }
 
 #[wasm_bindgen]
@@ -44,8 +43,10 @@ pub fn test_tx() -> JsValue {
 
 #[wasm_bindgen]
 pub fn register_class_sierra(hash: String, json: String) -> bool {
+    log(&format!("wasm register_class_sierra: {hash} json_len:{}", json.len()));
+
     let mut client = CLIENT.lock().unwrap();
-    match client.register_class(&hash, &json) {
+    match client.register_sierra_class(&hash, &json) {
         Ok(_) => true,
         Err(e) => {
             log(&format!("{:?}", e));
@@ -56,6 +57,8 @@ pub fn register_class_sierra(hash: String, json: String) -> bool {
 
 #[wasm_bindgen]
 pub fn register_class_raw(hash: String, json: String) -> bool {
+    log(&format!("wasm register_class_raw: {hash}"));
+
     let mut client = CLIENT.lock().unwrap();
     match client.register_class(&hash, &json) {
         Ok(_) => true,
@@ -68,6 +71,8 @@ pub fn register_class_raw(hash: String, json: String) -> bool {
 
 #[wasm_bindgen]
 pub fn register_class_v0(hash: String, json: String) -> bool {
+    log(&format!("wasm register_class_v0: {hash}"));
+
     let mut client = CLIENT.lock().unwrap();
     match client.register_class_v0(&hash, &json) {
         Ok(_) => true,
@@ -93,6 +98,8 @@ pub fn register_class_v0(hash: String, json: String) -> bool {
 
 #[wasm_bindgen]
 pub fn register_contract(address: String, class_hash: String) -> bool {
+    log(&format!("wasm register_contract: {address}"));
+
     let mut client = CLIENT.lock().unwrap();
     match client.register_contract(&address, &class_hash, HashMap::new()) {
         Ok(_) => true,
@@ -128,6 +135,7 @@ pub fn execute(caller: String, callee: String, entrypoint: String, calldata: JsV
     let calldata: Vec<String> = serde_wasm_bindgen::from_value(calldata).unwrap();
     let calldata = calldata.iter().map(|cd| cd.as_str()).collect();
 
+    log("wasm execute:");
     log(&format!(
         "caller: {} callee: {} entrypoint: {} \n\n{:?}",
         &caller, &callee, &entrypoint, calldata
@@ -157,6 +165,7 @@ pub fn execute(caller: String, callee: String, entrypoint: String, calldata: JsV
 
 #[wasm_bindgen]
 pub fn call(contract: String, entry_point: String, calldata: JsValue) -> JsValue {
+    log("wasm call:");
     log(&format!("contract: {contract} entrypoint: {entry_point} \n\n{:?}", calldata));
 
     let calldata: Vec<String> = serde_wasm_bindgen::from_value(calldata).unwrap();
@@ -186,6 +195,7 @@ pub fn call(contract: String, entry_point: String, calldata: JsValue) -> JsValue
         }
         Err(err) => {
             log(&format!("{:#?}", err));
+
             JsValue::FALSE
         }
     }
