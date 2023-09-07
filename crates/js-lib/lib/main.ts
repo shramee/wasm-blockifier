@@ -1,5 +1,6 @@
 import { Account, BigNumberish, RpcProvider } from "starknet";
 import { RPCProvider, strTofelt252Felt } from "@dojoengine/core";
+import LocalWorldHandler from "./LocalWorld.ts";
 
 type DojoCredentialArgs = {
 	accountAddress: string,
@@ -99,5 +100,9 @@ export default class Dojo {
 		});
 
 		return result;
+	}
+
+	async setupLocalWorld(pathToManifestDir: URL) {
+		return new LocalWorldHandler(pathToManifestDir, this.world);
 	}
 }

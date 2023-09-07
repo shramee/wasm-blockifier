@@ -1,26 +1,43 @@
-import './style.css'
-import Dojo from '../lib/main'
+import './style.css';
+import logo from '/logo.svg';
+import Dojo from '../lib/main';
 
-declare global { var dojo: Dojo; }
+async function setup_app() {
+  const { VITE_ACCOUNT, VITE_PRIVATE_KEY, VITE_WORLD, } = import.meta.env;
 
-const $f: HTMLFormElement | null = document.querySelector('form#app');
+  const dojo = Dojo.fromCredentials({
+    accountAddress: `${VITE_ACCOUNT}`,
+    accountPrivateKey: `${VITE_PRIVATE_KEY}`,
+    worldAddress: `${VITE_WORLD}`,
+  });
 
-if ($f) {
-	function setup($f: HTMLFormElement) {
-		let d = new FormData($f);
-		window.dojo = Dojo.fromCredentials({
-			accountAddress: d.get('account')?.toString() || '',
-			accountPrivateKey: d.get('skey')?.toString() || '',
-			worldAddress: d.get('world')?.toString() || '',
-			nodeUrl: d.get('rpc')?.toString() || '',
-		});
+  await dojo.setupLocalWorld(new URL(location.href + "world-sierra-contracts"));
 
-	}
-	$f.addEventListener('submit', e => {
-		e.preventDefault();
-		setup($f);
-	});
-	setTimeout(() => setup($f), 250);
+  document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+    <div>
+      <a href="https://dojoengine.org" target="_blank">
+        <img src="${logo}" class="logo" alt="Vite logo" />
+      </a>
+      <h1>Dojo starter</h1>
+      <p class="read-the-docs">
+        Your position component is: 
+      </p>
+      <p>
+      <code id="position-component">0, 0</code>
+      </p>
+      <button id="spawn">Spawn</button>
+    </div>
+  `
+  const $spawn = document.querySelector('#spawn');
+  // const $move = document.querySelector('#move');
+  const $posLog = document.querySelector('#position-component');
+
+  if ($posLog && 0) {
+    setInterval(async () => {
+      let pos = await dojo.entity("Position", VITE_ACCOUNT, 0, 2);
+      $posLog.innerHTML = `${pos[1]}, ${pos[2]}`;
+    }, 500);
+  }
 }
 
-export default Dojo;
+setup_app();

@@ -5,37 +5,11 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dojo Lib</title>
+  <title>WASM blockifier runtime</title>
 </head>
 
 <body>
-  <img class="logo" src="/dojo-full.svg" alt="Dojo">
-
-  <form id="app">
-    <div>
-      <label>World address</label>
-      <input value="0x7d1f066a910bd86f532fa9ca66766722c20d47462fb99fb2fb0e1030262f9c5" type="text" name="world"
-        placeholder="World address">
-    </div>
-    <div>
-      <label>RPC URL</label>
-      <input value="http://localhost:5050" type="text" name="rpc" placeholder="RPC URL">
-    </div>
-    <div>
-      <label>Account address</label>
-      <input value="0x3ee9e18edc71a6df30ac3aca2e0b02a198fbce19b7480a63a0d71cbd76652e0" type="text" name="account"
-        placeholder="Account address">
-    </div>
-    <div>
-      <label>Account secret key</label>
-      <input value="0x300001800000000300000180000000000030000000000003006001800006600" type="text" name="skey"
-        placeholder="Account secret key">
-    </div>
-    <div>
-      <button id="setup-btn" type="submit">Setup</button>
-    </div>
-  </form>
-
+  <div id="app"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
