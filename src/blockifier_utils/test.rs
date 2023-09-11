@@ -8,8 +8,8 @@ mod transactions {
     use starknet_api::calldata;
     use starknet_api::transaction::Calldata;
 
-    use crate::client::Client;
-    use crate::utils::{addr, invoke_calldata, invoke_tx, ACCOUNT_ADDR, FEE_TKN_ADDR};
+    use super::super::client::Client;
+    use super::super::utils::{addr, invoke_calldata, invoke_tx, ACCOUNT_ADDR, FEE_TKN_ADDR};
 
     #[test]
     fn state() {
@@ -49,7 +49,7 @@ mod transactions {
     fn deploy_world() {
         let _ = PathBuf::from("../contracts/dojo-world-test.json");
         let mut client = Client::new();
-        let account_json = include_bytes!("../contracts/dojo-world-test.json");
+        let account_json = include_bytes!("../../contracts/dojo-world-test.json");
         let account_json = String::from_utf8_lossy(account_json);
 
         client.register_sierra_class("0x3071d", &account_json).unwrap();

@@ -28,6 +28,9 @@ pub mod cairo_vm_const {
     pub const POSEIDON_BUILTIN_NAME: &str = "poseidon_builtin";
     pub const SEGMENT_ARENA_BUILTIN_NAME: &str = "segment_arena_builtin";
 }
+use core::convert::TryInto;
+
+use cairo_lang_casm_contract_class::CasmContractClass;
 
 /// Fee token contract - Contract Address and Class Hash (identical)
 pub const FEE_TKN_ADDR: &str = "0x1";

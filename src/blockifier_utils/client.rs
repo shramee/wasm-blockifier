@@ -1,3 +1,5 @@
+use core::convert::TryInto;
+
 use blockifier::block_context::BlockContext;
 use blockifier::execution::contract_class::{ContractClass, ContractClassV0, ContractClassV1};
 use blockifier::execution::entry_point::{
@@ -12,11 +14,11 @@ use starknet_api::api_core::{ClassHash, ContractAddress, Nonce};
 use starknet_api::hash::StarkFelt;
 use starknet_api::state::StorageKey;
 
-use crate::utils::{
+use super::utils::{
     addr, block_context, compile_sierra_class, HashMap, TransactionExecutionError,
     TransactionExecutionInfo, ACCOUNT_ADDR, CAIRO_STEPS, DEPLOYER_ADDR, FEE_TKN_ADDR,
 };
-use crate::ClientState;
+use super::ClientState;
 
 pub struct Client {
     cache: CachedState<ClientState>,
@@ -43,11 +45,11 @@ impl Client {
 
         let mut client = Client { cache: CachedState::from(state), block_ctx: block_context() };
 
-        let account_json = include_bytes!("../contracts/account_without_validation.json");
+        let account_json = include_bytes!("../../contracts/account_without_validation.json");
         let account_json = String::from_utf8_lossy(account_json);
-        let erc20_json = include_bytes!("../contracts/erc20.json");
+        let erc20_json = include_bytes!("../../contracts/erc20.json");
         let erc20_json = String::from_utf8_lossy(erc20_json);
-        let udc_json = include_bytes!("../contracts/deployer.json");
+        let udc_json = include_bytes!("../../contracts/deployer.json");
         let udc_json = String::from_utf8_lossy(udc_json);
 
         client.register_class_v0(FEE_TKN_ADDR, &erc20_json).unwrap();

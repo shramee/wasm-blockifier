@@ -1,6 +1,8 @@
 mod utils;
 use std::sync::Mutex;
 
+mod blockifier_utils;
+
 use blockifier_utils::utils::{
     addr, invoke_calldata, invoke_tx, selector_from_name, CallEntryPoint, Calldata, HashMap,
     StarkFelt,

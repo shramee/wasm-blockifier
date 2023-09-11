@@ -192,9 +192,9 @@ checksum = "9e1b586273c5702936fe7b7d6896644d8be71e6314cfe09d3167c95f712589e8"
 
 [[package]]
 name = "base64"
-version = "0.21.3"
+version = "0.21.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "414dcefbc63d77c526a76b3afcf6fbb9b5e2791c19c3aa2297733208750c6e53"
+checksum = "9ba43ea6f343b788c8764558649e08df62f86c6ef251fdaeb1ffd010a9ae50a2"
 
 [[package]]
 name = "bigdecimal"
@@ -301,18 +301,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "blockifier_utils"
-version = "0.1.0"
-dependencies = [
- "blockifier",
- "cairo-lang-starknet",
- "serde",
- "serde_json",
- "starknet-core",
- "starknet_api",
-]
-
-[[package]]
 name = "bumpalo"
 version = "3.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -333,7 +321,7 @@ checksum = "14c189c53d098945499cdfa7ecc63567cf3886b3332b312a5b4585d8d3a6a610"
 [[package]]
 name = "cairo-felt"
 version = "0.8.5"
-source = "git+https://github.com/keep-starknet-strange/cairo-rs?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
+source = "git+https://github.com/keep-starknet-strange/cairo-rs.git?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
 dependencies = [
  "lazy_static",
  "num-bigint",
@@ -346,9 +334,9 @@ dependencies = [
 [[package]]
 name = "cairo-lang-casm"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530#f8b5fe438e0d201b7d1afb39c21d343ff95b5850"
 dependencies = [
- "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530)",
  "hashbrown 0.14.0",
  "indoc",
  "num-bigint",
@@ -376,14 +364,13 @@ dependencies = [
 [[package]]
 name = "cairo-lang-casm-contract-class"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530#f8b5fe438e0d201b7d1afb39c21d343ff95b5850"
 dependencies = [
- "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
- "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530)",
+ "cairo-lang-utils 2.1.0 (git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530)",
  "itertools",
  "num-bigint",
  "serde",
- "thiserror-no-std",
 ]
 
 [[package]]
@@ -769,7 +756,7 @@ dependencies = [
 [[package]]
 name = "cairo-lang-utils"
 version = "2.1.0"
-source = "git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530#0e591510d73be8d737b0832dc9215ff409e0ed15"
+source = "git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530#f8b5fe438e0d201b7d1afb39c21d343ff95b5850"
 dependencies = [
  "cairo-felt",
  "hashbrown 0.14.0",
@@ -818,7 +805,7 @@ dependencies = [
 [[package]]
 name = "cairo-take_until_unbalanced"
 version = "0.29.0"
-source = "git+https://github.com/keep-starknet-strange/cairo-rs?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
+source = "git+https://github.com/keep-starknet-strange/cairo-rs.git?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
 dependencies = [
  "nom",
 ]
@@ -826,7 +813,7 @@ dependencies = [
 [[package]]
 name = "cairo-vm"
 version = "0.8.5"
-source = "git+https://github.com/keep-starknet-strange/cairo-rs?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
+source = "git+https://github.com/keep-starknet-strange/cairo-rs.git?branch=no_std-support-21eff70#fbf956c6d91949735f971dc5f396b3994488ecba"
 dependencies = [
  "anyhow",
  "ark-ff",
@@ -834,8 +821,8 @@ dependencies = [
  "bincode",
  "bitvec",
  "cairo-felt",
- "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
- "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm 2.1.0 (git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530)",
  "cairo-take_until_unbalanced",
  "generic-array",
  "hashbrown 0.14.0",
@@ -873,9 +860,9 @@ checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
 name = "chrono"
-version = "0.4.28"
+version = "0.4.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "95ed24df0632f708f5f6d8082675bef2596f7084dee3dd55f632290bf35bfe0f"
+checksum = "defd4e7873dbddba6c7c91e199c7fcb946abc4a6a4ac3195400bcfb01b5de877"
 dependencies = [
  "num-traits 0.2.16",
  "serde",
@@ -885,11 +872,16 @@ dependencies = [
 name = "client-wasm"
 version = "0.1.0"
 dependencies = [
- "blockifier_utils",
+ "blockifier",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/shramee/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-starknet",
  "console_error_panic_hook",
  "lazy_static",
  "serde",
  "serde-wasm-bindgen",
+ "serde_json",
+ "starknet-core",
+ "starknet_api",
  "wasm-bindgen",
  "wasm-bindgen-test",
 ]
@@ -1471,9 +1463,9 @@ checksum = "f7012b1bbb0719e1097c47611d3898568c546d597c2e74d66f6087edd5233ff4"
 
 [[package]]
 name = "linux-raw-sys"
-version = "0.4.5"
+version = "0.4.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57bcfdad1b858c2db7c38303a6d2ad4dfaf5eb53dfeb0910128b2c26d6158503"
+checksum = "1a9bad9f94746442c783ca431b22403b519cd7fbeed0533fdd6328b2f2212128"
 
 [[package]]
 name = "lock_api"
@@ -1955,9 +1947,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.11"
+version = "0.38.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c0c3dde1fc030af041adc40e79c0e7fbcf431dd24870053d187d7c66e4b87453"
+checksum = "d7db8590df6dfcd144d22afd1b83b36c21a18d7cbc1dc4bb5295a8712e9eb662"
 dependencies = [
  "bitflags 2.4.0",
  "errno",
@@ -2058,9 +2050,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.105"
+version = "1.0.106"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "693151e1ac27563d6dbcec9dee9fbd5da8539b20fa14ad3752b2e6d363ace360"
+checksum = "2cc66a619ed80bf7a0f6b17dd063a84b88f6dea1813737cf469aef1d081142c2"
 dependencies = [
  "itoa",
  "ryu",
@@ -2185,7 +2177,7 @@ version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "91f89c79b641618de8aa9668d74c6b6634659ceca311c6318a35c025f9d4d969"
 dependencies = [
- "base64 0.21.3",
+ "base64 0.21.4",
  "flate2",
  "hex",
  "serde",
@@ -2285,7 +2277,7 @@ name = "starknet_api"
 version = "0.4.1"
 source = "git+https://github.com/keep-starknet-strange/starknet-api?branch=no_std-support-dc83f05#4356aa56e60d0a87792eecdb4d668cfcc1c74211"
 dependencies = [
- "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo.git?branch=no_std-support-8bbf530)",
+ "cairo-lang-casm-contract-class 2.1.0 (git+https://github.com/keep-starknet-strange/cairo?branch=no_std-support-8bbf530)",
  "derive_more",
  "hashbrown 0.14.0",
  "hex",
@@ -2456,9 +2448,9 @@ dependencies = [
 
 [[package]]
 name = "toml"
-version = "0.7.6"
+version = "0.7.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c17e963a819c331dcacd7ab957d80bc2b9a9c1e71c804826d2f283dd65306542"
+checksum = "dd79e69d3b627db300ff956027cc6c3798cef26d22526befdfcd12feeb6d2257"
 dependencies = [
  "serde",
  "serde_spanned",
@@ -2477,9 +2469,9 @@ dependencies = [
 
 [[package]]
 name = "toml_edit"
-version = "0.19.14"
+version = "0.19.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f8123f27e969974a3dfba720fdb560be359f57b44302d280ba72e76a74480e8a"
+checksum = "1b5bb770da30e5cbfde35a2d7b9b8a2c4b8ef89548a7a6aeab5c9a576e3e7421"
 dependencies = [
  "indexmap 2.0.0",
  "serde",

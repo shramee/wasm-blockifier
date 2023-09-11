@@ -7,7 +7,7 @@ use starknet_api::api_core::{ClassHash, CompiledClassHash, ContractAddress, Nonc
 use starknet_api::hash::StarkFelt;
 use starknet_api::state::StorageKey;
 
-use crate::utils::addr;
+use super::utils::addr;
 
 #[derive(Debug, Default)]
 pub struct ClientState {
