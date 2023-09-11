@@ -8,3 +8,7 @@ dojo.iml
 .DS_Store
 .env
 data
+**/*.rs.bk
+bin/
+pkg/
+wasm-pack.log

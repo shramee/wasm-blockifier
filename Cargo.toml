@@ -1,20 +1,22 @@
-[workspace]
+[package]
+name = "client-wasm"
+version = "0.1.0"
+authors = ["Shramee Srivastav <shramee.srivastav@gmail.com>"]
+edition = "2018"
 
-resolver = "2"
+[lib]
+crate-type = ["cdylib", "rlib"]
 
-members = [
-  "crates/wasm",
-  "crates/blockifier_utils",
-]
+[dependencies]
+blockifier_utils = { path = "crates/blockifier_utils" }
+console_error_panic_hook = "0.1.7"
+lazy_static = "1.4.0"
+serde = { version = "1.0", features = ["derive"] }
+serde-wasm-bindgen = "0.4"
+wasm-bindgen = "0.2.84"
 
-[workspace.package]
-edition = "2021"
-license = "Apache-2.0"
-license-file = "LICENSE"
-repository = "https://github.com/dojoengine/dojo/"
-version = "0.2.1"
-
-[workspace.dependencies]
+[dev-dependencies]
+wasm-bindgen-test = "0.3.34"
 
 [profile.dev]
 opt-level = 1
