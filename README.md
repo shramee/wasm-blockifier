@@ -1,8 +1,8 @@
-# Dojo client
+# Blockifier in WASM
 
-Introduces JS provider to interact with Dojo World (via Torii).
+Introduces JS provider to interact with your contracts (or Dojo worlds) in a WASM package.
 
-Loads dojo systems and executes them in locally in blockifier updating local state instantaneously. Reconciles with sequencer state when transaction is processed.
+Loads contracts and executes them in locally in blockifier updating local state instantaneously.
 
 ## 🚴 Usage
 
